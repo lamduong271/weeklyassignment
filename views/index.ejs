@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Express</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="javascripts/index.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Recipes</h1>
+    <h2>Added Task</h2>
+    <% for( var i = 0; i < allRecipes.length; i++){ %>
+    <li>
+      <input type="checkbox" name="check" value="<%= allRecipes[i].name %>" />
+      <%= allRecipes[i].name %>
+    </li>
+    <% } %>
+    <form action="/recipe" method="POST">
+      <h4>Name</h4>
+      <input type="text" id="name-text" name="recipeName" />
+      <h4>Ingredients</h4>
+      <div class="row">
+        <div class="input-field col s8">
+          <textarea id="ingredients-text" name="recipeIngredient"></textarea>
+        </div>
+        <div class="input-field col s4">
+          <button
+            id="add-ingredient"
+            type="button"
+            class="waves-effect waves-light btn-large"
+            onclick="addIngredient()"
+          >
+            Add ingredient
+          </button>
+        </div>
+      </div>
+      <h4>instructions</h4>
+      <div class="row">
+        <div class="input-field col s8">
+          <textarea id="instructions-text" name="recipeInstruction"></textarea>
+        </div>
+        <div class="input-field col s4">
+          <button
+            id="add-instruction"
+            type="button"
+            class="waves-effect waves-light btn-large"
+            onclick="addInstruction()"
+          >
+            Add instruction
+          </button>
+        </div>
+      </div>
+
+      <button
+        id="submit"
+        type="submit"
+        class="waves-effect waves-light btn-large"
+      >
+        Submit
+      </button>
+    </form>
+  </body>
+</html>
